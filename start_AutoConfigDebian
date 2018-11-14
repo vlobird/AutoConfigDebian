@@ -1,0 +1,213 @@
+#!/bin/bash
+# =================================== #
+# =====	AutoConfigDebian	===== #
+# =================================== #
+
+
+#  Tool to install kind of a rice for Debian
+#
+#  by Vlobird <vlo.bird@web.de>
+#  License: GNU GPLv3
+#
+
+
+
+# ======================= #
+# =	FUNCTIONS	= #
+# ======================= #
+
+acd_install()
+{
+	group=$1
+	clear
+	sudo apt -y install $(cat src/proglist | grep ^$group | awk '{print $2}')
+}
+
+acd_welcome()
+{
+	clear
+	printf "\n Welcome to AutoConfigDebian\n\
+-----------------------------\n\
+	 This Script will config Debian and install everything for a useable OS.\n\
+	\n\
+	 Dependencies:\n\
+	 - Debian install\n\
+	 - internet connection\n\
+	 - NOTHING ELSE\n\
+	\n\
+	 Everything else will come with the script.\n\
+	\n"
+	echo -n " Want to start the installation? (y/N): "
+	read choice
+	[ ! "$choice" = "y" ] && exit
+}
+
+acd_check_sudo()
+{
+	if [ "$EUID" -eq 0 ]
+	then 	printf "\n Script started as root...\n\n\
+		Run the script without sudo..."
+		exit
+	fi
+}
+
+acd_check_internet()
+{
+	ping -c1 debian.org
+	if [ "$?" -ne 0 ]
+	then	printf "\n No internet-connection...\n\n"
+		exit
+	fi
+}
+
+acd_update_source()
+{
+	source="/etc/apt/source.list"
+
+	[ -f $source ] && sudo mv $source $source-BAK
+	sudo cat src/source.list > $source
+	sudo apt update && sudo apt upgrade
+}
+
+acd_check_gitInstallation()
+{
+	if ! dpkg -s git &> /dev/null
+	then	sudo apt -y install git
+	fi
+}
+
+acd_make_folders()
+{
+	mkdir -p $(cat src/folder)
+}
+
+acd_wm()
+{
+	acd_install wm
+	echo "exec i3" > ~/.xinitrc
+}
+
+acd_gaps()
+{
+	# Dependencies
+	acd_install gaps
+	
+	# Build
+	cd ~/.GIT
+	git clone https://www.github.com/Airblader/i3 i3-gaps
+	cd i3-gaps
+	autoreconf --force --install
+	rm -rf build/
+	mkdir -p build && cd build/
+	../configure --prefix=/usr --sysconfdir=/etc --disable-sanitizers
+	make
+	sudo make install
+	cd
+}
+
+acd_filemanagement()
+{
+	acd_install files
+
+	# Client for MTP-Devices (like android-phones)
+	cd ~/.GIT
+	git clone https://github.com/vlobird/aft-bin
+	cd aft-bin
+	bash install
+	cd
+}
+
+acd_multimedia()
+{
+	# general-stuff
+	acd_install multi
+
+	# video-stuff
+	acd_install video
+
+	# picture-stuff
+	acd_install pic
+
+	# music-stuff
+	acd_install music
+}
+
+acd_internet()
+{
+	# browser
+	acd_install web
+
+	# mail-client
+	acd_install mail
+
+	# filetransfer
+	acd_install ft
+}
+
+acd_fetch_configs()
+{
+	cd ~/.GIT
+	git clone https://github.com/vlobird/ricedots
+	rsync -r ricedots ~/
+	cd
+}
+
+acd_edit_sudoers()
+{
+	sudo echo "%users ALL = NOPASSWD: /bin/mount, /bin/umount" >> /etc/sudoers
+	sudo echo "%users ALL = NOPASSWD: /usr/bin/apt update, /usr/bin/apt search" >> /etc/sudoers
+	sudo echo "%users ALL = NOPASSWD: /bin/reboot, /bin/shutdown" >> /etc/sudoers
+}
+
+acd_end_script()
+{
+	printf "\n AutoConfigDebian is done...\n\n"
+	printf "-------------------------\n"
+	printf "type startx to start i3\n"
+	printf "-------------------------\n\n"
+}
+
+
+# =============== #
+# =	RUN	= #
+# =============== #
+
+main(){
+# welcome-message
+	acd_welcome
+
+# check dependencies
+	acd_check_sudo
+	acd_check_internet
+	acd_update_source
+	acd_check_gitInstallation
+
+# make folders
+	acd_make_folders
+	
+# install progs
+	acd_wm
+	acd_gaps
+	acd_install term
+	acd_install shell
+	acd_install sys
+	acd_filemanagement
+	acd_install latex
+	acd_install gtk
+	acd_install fonts
+	acd_install audio
+	acd_multimedia
+	acd_internet
+
+# get config-files
+	acd_fetch_configs
+
+# finalize
+	acd_edit_sudoers
+	acd_end_script
+}
+main ${@}
+
+# =============== #
+# =	EOF	= #
+# =============== #
