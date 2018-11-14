@@ -12,7 +12,7 @@ files	exfat-utils
 pic	feh
 multi	ffmpeg
 ft	filezilla
-web	firefox
+web	firefox-esr
 fonts	fonts-inconsolata
 fonts	fonts-linux-libertine
 pic	gimp
@@ -61,7 +61,7 @@ term	rxvt-unicode
 pic	scrot
 ft	sshfs
 latex	texlive-full
-files	unrar
+files	unrar-free
 files	unzip
 sys	vim-gtk
 video	vlc
