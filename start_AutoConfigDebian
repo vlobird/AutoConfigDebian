@@ -49,6 +49,16 @@ acd_check_sudo()
 		Run the script without sudo..."
 		exit
 	fi
+
+	groups | grep sudo > /dev/null
+	if [ $? -eq 0 ]
+	then printf "\n user is not in sudoers-file...\n\n\
+		to correct that follow these steps:\n\
+		1. su root\n\
+		2. adduser user sudo\n\
+		3. reboot\n"
+	exit
+fi
 }
 
 acd_check_internet()
@@ -71,7 +81,7 @@ acd_update_source()
 
 acd_check_gitInstallation()
 {
-	if ! dpkg -s git &> /dev/null
+	if ! dpkg -s git &> /dev/nul
 	then	sudo apt -y install git
 	fi
 }
