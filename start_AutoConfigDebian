@@ -64,7 +64,7 @@ acd_update_source()
 {
 	source="/etc/apt/source.list"
 
-	[ -f $source ] && sudo mv $source $source-BAK
+	sudo [ -f $source ] && sudo mv $source $source-BAK
 	sudo cat src/source.list > $source
 	sudo apt update && sudo apt upgrade
 }
