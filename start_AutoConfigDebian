@@ -15,12 +15,12 @@
 # ======================= #
 # =	FUNCTIONS	= #
 # ======================= #
-
+workdir=$PWD
 acd_install()
 {
 	group=$1
 	clear
-	sudo apt -y install $(cat src/proglist | grep ^$group | awk '{print $2}')
+	sudo apt -y install $(cat $workdir/src/proglist | grep ^$group | awk '{print $2}')
 }
 
 acd_welcome()
@@ -88,7 +88,7 @@ acd_check_gitInstallation()
 
 acd_make_folders()
 {
-	mkdir -p $(cat src/folder)
+	mkdir /home/$USER/.GIT
 }
 
 acd_wm()
