@@ -18,7 +18,6 @@ fonts	fonts-linux-libertine
 pic	gimp
 sys	htop
 wm	i3
-wm	i3gaps
 wm	i3lock
 pic	imagemagick
 gaps	libev-dev
@@ -42,7 +41,6 @@ multi	mediainfo
 music	mocp
 mutli	mpv
 mail	mutt
-sys	network-manager-applet
 sys	network-manager-gnome
 sys	newsbeuter
 files	ntfs-3g
