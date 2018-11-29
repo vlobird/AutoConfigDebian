@@ -51,7 +51,7 @@ A full list of the progs is [here](https://github.com/AutoConfigDebian/blob/mast
 `ranger` `android-file-transfer`
 
 ### LaTeX
-`texlive-full` `pandoc` `evince`
+`texlive-full` `pandoc` `zathura`
 
 ### GTK-Theme
 `arc-theme` `numix-icon-theme` `lxappearance`

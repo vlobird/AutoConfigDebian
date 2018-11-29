@@ -5,9 +5,8 @@ sys	arandr
 gtk	arc-theme
 video	avidemux
 sys	calcurse
-sys	dmenu
+sys	suckless-tools
 wm	dunst
-latex	evince
 files	exfat-utils
 pic	feh
 multi	ffmpeg
@@ -19,6 +18,7 @@ pic	gimp
 sys	htop
 wm	i3
 wm	i3lock
+wm	i3blocks
 pic	imagemagick
 gaps	libev-dev
 gaps	libpango1.0-dev
@@ -69,4 +69,5 @@ gaps	xcb
 sys	xcompmgr
 wm	xorg
 video	youtube-dl
+latex	zathura
 shell	zsh
