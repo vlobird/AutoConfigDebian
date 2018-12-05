@@ -1,5 +1,4 @@
 # AutoConfigDebian
------
 
 Tool to install kind of a rice to a debian fresh install
 
@@ -7,7 +6,6 @@ A very small terminal- and keyboardoriantaded setup of Debian
 
 It will install [my personal scripts, dotfiles and configs](https://github.com/vlobird/ricedots)
 
------
 
 ## Depends
 - a fresh install of debian
@@ -34,7 +32,7 @@ A full list of the progs is [here](https://github.com/AutoConfigDebian/blob/mast
 
 - Network
 
-  `network-manager-gnome` `network-manager-applet`
+  `network-manager` `network-manager-gnome`
 
 - Editor
 
@@ -45,7 +43,7 @@ A full list of the progs is [here](https://github.com/AutoConfigDebian/blob/mast
  `rsync` `htop`  `openssh` `python-pip` `numlockx` `calcurse` `newsbeuter` `rtv`
 
 ### Terminal
-- `xrvt-unicode`  `zsh`
+`xrvt-unicode`  `zsh`
 
 ### Filemanager
 `ranger` `android-file-transfer`

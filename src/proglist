@@ -41,6 +41,7 @@ multi	mediainfo
 music	mocp
 mutli	mpv
 mail	mutt
+sys	network-manager
 sys	network-manager-gnome
 sys	newsbeuter
 files	ntfs-3g
