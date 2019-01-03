@@ -62,7 +62,7 @@ ft	sshfs
 latex	texlive-full
 files	unrar-free
 files	unzip
-sys	vim-gtk
+sys	nvim-qt
 video	vlc
 files	w3m
 files	w3m-img
