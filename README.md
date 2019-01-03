@@ -36,7 +36,7 @@ A full list of the progs is [here](https://github.com/AutoConfigDebian/blob/mast
 
 - Editor
 
-  `vim`
+  `neovim`
 
 - Others
 
