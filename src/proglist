@@ -38,9 +38,11 @@ gaps	libxkbcommon-x11-dev
 gaps	libyajl-dev
 gtk	lxappearance
 multi	mediainfo
-music	mocp
+music	mpc
+music	mpd
 mutli	mpv
 mail	mutt
+music	ncmpcpp
 sys	network-manager
 sys	network-manager-gnome
 sys	newsbeuter

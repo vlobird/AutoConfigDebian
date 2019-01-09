@@ -75,7 +75,7 @@ A full list of the progs is [here](https://github.com/AutoConfigDebian/blob/mast
 
 - Music
 
-  `mocp`
+  `mpd + ncmpcpp`
 
 ### Internet
 - Browser
