@@ -51,7 +51,7 @@ gtk	numix-icon-theme
 sys	numlockx
 sys	openssh
 latex	pandoc
-audio	pavucontrol
+audio	pulseaudio
 files	pmount
 sys	python-pip
 web	qupzilla
