@@ -51,7 +51,7 @@ acd_check_sudo()
 	fi
 
 	groups | grep sudo > /dev/null
-	if [ $? -eq 0 ]
+	if [ $? -ne 0 ]
 	then printf "\n user is not in sudoers-file...\n\n\
 		to correct that follow these steps:\n\
 		1. su root\n\
@@ -88,7 +88,10 @@ acd_check_gitInstallation()
 
 acd_make_folders()
 {
-	mkdir /home/$USER/.GIT
+	for a in $(cat $workdir/src/folder)
+	do
+		mkdir -p /home/$USER/$a
+	done
 }
 
 acd_wm()
@@ -103,7 +106,7 @@ acd_gaps()
 	acd_install gaps
 	
 	# Build
-	cd ~/.GIT
+	cd /.GIT
 	git clone https://www.github.com/Airblader/i3 i3-gaps
 	cd i3-gaps
 	autoreconf --force --install
@@ -158,7 +161,7 @@ acd_fetch_configs()
 {
 	cd ~/.GIT
 	git clone https://github.com/vlobird/ricedots
-	rsync -r ricedots ~/
+	rsync -r ricedots/ /home/$USER
 	cd
 }
 
@@ -171,10 +174,10 @@ acd_edit_sudoers()
 
 acd_end_script()
 {
-	printf "\n AutoConfigDebian is done...\n\n"
-	printf "-------------------------\n"
-	printf "type startx to start i3\n"
-	printf "-------------------------\n\n"
+	printf "\n AutoConfigDebian is done...\n\n\
+		-------------------------\n\
+		type startx to start i3\n\
+		-------------------------\n\n"
 }
 
 
