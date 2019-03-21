@@ -40,6 +40,7 @@ gaps	libxcb-randr0-dev
 gaps	libxcb-xrm0 
 gaps	libxcb-xrm-dev 
 gaps	libxcb-shape0-dev
+wm	libnotify-bin
 gtk	lxappearance
 multi	mediainfo
 music	mpc
