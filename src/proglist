@@ -69,6 +69,7 @@ ft	sshfs
 pic	sxiv
 latex	texlive-full
 files	unrar-free
+files	unrar
 files	unzip
 sys	vim-gtk
 video	vlc
