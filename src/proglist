@@ -4,6 +4,7 @@ sys	arandr
 gtk	arc-theme
 video	avidemux
 sys	calcurse
+files	cifs-utils
 sys	suckless-tools
 wm	dunst
 files	exfat-utils
