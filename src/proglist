@@ -57,6 +57,7 @@ gtk	numix-icon-theme
 sys	numlockx
 sys	openssh
 latex	pandoc
+sys	pdf-presenter-console
 audio	pulseaudio
 files	pmount
 sys	python-pip
